@@ -35,7 +35,7 @@
      	<url-pattern>/UpdateServlet</url-pattern>
      </servlet-mapping>
      
-     
+         
      <servlet>
      	<servlet-name>DeleteServlet</servlet-name>
      	<servlet-class>BookShopPackage.DeleteServlet</servlet-class>
@@ -44,6 +44,7 @@
      	<servlet-name>DeleteServlet</servlet-name>
      	<url-pattern>/DeleteServlet</url-pattern>
      </servlet-mapping>
+     
      
      <!-- User System-->
      <servlet>
@@ -54,6 +55,7 @@
      	<servlet-name>UserInsertServlet</servlet-name>
      	<url-pattern>/UserInsertServlet</url-pattern>
      </servlet-mapping>
+     
      
      <!-- User Login -->
      <servlet>
@@ -66,5 +68,13 @@
      </servlet-mapping>
      
      
-     
+     <!-- User Profile -->
+     <servlet>
+     	<servlet-name>profileServlet</servlet-name>
+     	<servlet-class>UserPackage.profileServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>profileServlet</servlet-name>
+     	<url-pattern>/profileServlet</url-pattern>
+     </servlet-mapping>
 </web-app>

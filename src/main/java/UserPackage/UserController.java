@@ -65,5 +65,34 @@ public class UserController {
 			}
 			return user;
 		}
+		
+		public static List<UserModel> userProfile (String Id){
+			int convertID = Integer.parseInt(Id);
+			
+			ArrayList<UserModel> user =  new ArrayList<>();
+			
+			try {
+				//DB Connection call
+				con = DBConnection.getConnection();
+				stmt = con.createStatement();
+				
+				String sql = "select * from user where id= '"+convertID+"' ";
+				rs = stmt.executeQuery(sql);
+				
+				if(rs.next()) {
+					int id = rs.getInt(1);
+					String name = rs.getString(2);
+					String email = rs.getString(3);
+					String pass = rs.getString(4);
+					String phone = rs.getString(5);
+					
+					UserModel u = new UserModel(id,name,email,pass,phone);
+					user.add(u);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return user;
+		}
 
 }

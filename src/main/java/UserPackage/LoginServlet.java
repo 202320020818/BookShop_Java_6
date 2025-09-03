@@ -27,8 +27,12 @@ public class LoginServlet extends HttpServlet {
 			List<UserModel> userlogin = UserController.loginValidation(gmail, password);
 			
 			if(userlogin != null && !userlogin.isEmpty()) {
+				request.getSession().setAttribute("user", userlogin.get(0));
+				response.sendRedirect("profileServlet");
+				/***
 				String alertMessage = "Login Successful";
 				response.getWriter().println("<script>alert('"+alertMessage+"');window.location.href='profile.jsp' </script>");
+				**/
 			}
 			else {
 				String alertMessage = "Invalid Credentials, Please try again";
