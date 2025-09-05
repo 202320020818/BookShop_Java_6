@@ -77,4 +77,16 @@
      	<servlet-name>profileServlet</servlet-name>
      	<url-pattern>/profileServlet</url-pattern>
      </servlet-mapping>
+     
+     
+     <!-- User Account Delete -->
+     <servlet>
+     	<servlet-name>AccountDeleteServlet</servlet-name>
+     	<servlet-class>UserPackage.AccountDeleteServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AccountDeleteServlet</servlet-name>
+     	<url-pattern>/AccountDeleteServlet</url-pattern>
+     </servlet-mapping>
+     
 </web-app>

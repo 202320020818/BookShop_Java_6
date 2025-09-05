@@ -99,6 +99,8 @@ public class BookController {
 		}
 		return books;
 	}
+	
+	//Update data 
 	public static boolean updatedata(String id,String name,String price,String catagory,String qunetity,String description) {
 		try {
 			//DBConnection
