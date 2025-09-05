@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Product Table</title>
 
+
 </head>
 <body>
 	<h2>Product Table</h2>

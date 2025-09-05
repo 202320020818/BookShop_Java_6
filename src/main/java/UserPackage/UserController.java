@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import BookShopPackage.BookModel;
 import BookShopPackage.DBConnection;
 
 public class UserController {
@@ -94,5 +95,85 @@ public class UserController {
 			}
 			return user;
 		}
+		
+		//GetById
+		public static List<UserModel> getById (String Id){
+			
+			int convertedID = Integer.parseInt(Id);
+			
+			ArrayList <UserModel> user = new ArrayList<>();
+			
+			try {
+				//DBConnection
+				con = DBConnection.getConnection();
+				stmt = con.createStatement();
+				
+				//Query
+				String sql = "select * from user where id '"+ convertedID +"' ";
+				
+				rs = stmt.executeQuery(sql);
+				while(rs.next()) {
+					int id = rs.getInt(1);
+					String name = rs.getString(2);
+					String gmail = rs.getString(3);
+					String password = rs.getString(4);
+					String phone = rs.getString(5);
+					
+					
+					UserModel u = new  UserModel(id,name,gmail,password,phone);
+					user.add(u);			
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return user;
+		}
+		
+		//User Profile Update  
+		public static boolean updatedata(String id,String name,String gmail,String password,String phone) {
+			try {
+				//DBConnection
+				con = DBConnection.getConnection();
+				stmt = con.createStatement();
+				
+				//sql query
+				String sql = "update user set name='"+name+"',gmail='"+gmail+"',password='"+password+"',phone='"+phone+"' "
+						+ "where id= '"+ id +"' ";
+				
+				int rs = stmt.executeUpdate(sql);
 
+		        if(rs > 0) {
+		            isSuccess = true;
+		        }
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return isSuccess;
+		}
+		//User Delete 
+		public static boolean deletedata(String id) {
+			int convID = Integer.parseInt(id); //convert id
+			try {
+				//DBConnection
+				con=DBConnection.getConnection();
+				stmt=con.createStatement();
+				
+				String sql = "delete from user where id='"+convID+"'"; //id is unique 
+				int rs = stmt.executeUpdate(sql);
+				
+				if(rs > 0) {
+					isSuccess = true;
+				}
+				else {
+					isSuccess = false;
+				}
+						
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return isSuccess;
+		}
+		
 }
